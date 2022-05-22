@@ -1,5 +1,5 @@
 program main
-   use mymatmul, only: dp, say_hello, mymatmuls1, mymatmuls2, mymatmulf
+   use mymatmul
    implicit none
    !integer, parameter :: dp = selected_real_kind(p=15)
    integer, parameter :: m = 2, n = 3
@@ -30,5 +30,4 @@ program main
 
    print '(2f9.3)', (c(i, :), i=1, 2)
 
-   call say_hello()
 end program main
