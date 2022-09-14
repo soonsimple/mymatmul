@@ -7,10 +7,10 @@ module mymatmul
 
 contains
    subroutine mymatmuls1(a, b, c, m, n)
-      integer :: m, n
+      integer, intent(in) :: m, n
       real(kind=dp), dimension(1:m, 1:n), intent(in) :: a
       real(kind=dp), dimension(1:n, 1:m), intent(in) :: b
-      real(kind=dp), dimension(1:m, 1:m), intent(out):: c
+      real(kind=dp), dimension(1:m, 1:m), intent(out) :: c
       integer :: i, j, k
 
       do i = 1, m
@@ -27,7 +27,7 @@ contains
       integer :: m, n
       real(kind=dp), dimension(:, :), intent(in) :: a
       real(kind=dp), dimension(:, :), intent(in) :: b
-      real(kind=dp), dimension(:, :), intent(out) :: cc
+      real(kind=dp), dimension(:, :) :: cc
       integer :: i, j, k
 
       m = size(a, 1)
@@ -44,12 +44,13 @@ contains
 
    function mymatmulf(a, b)
       integer :: m, n
+      integer :: i, j, k
+
       real(kind=dp), dimension(:, :), intent(in) :: a
       real(kind=dp), dimension(:, :), intent(in) :: b
       real(kind=dp), dimension(1:size(a, 1), 1:size(a, 1)) :: mymatmulf
       ! real(kind=dp), dimension(:, :) :: mymatmulf
       ! error: Array 'mymatmulf' cannot have a deferred shape
-      integer :: i, j, k
 
       m = size(a, 1)
       n = size(a, 2)
