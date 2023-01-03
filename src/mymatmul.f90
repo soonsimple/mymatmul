@@ -1,7 +1,7 @@
 module mymatmul
    implicit none
    integer, parameter :: dp = selected_real_kind(p=15)
-   
+
    private
 
    public :: dp, mymatmuls1, mymatmuls2, mymatmulf
@@ -34,7 +34,7 @@ contains
 
       m = size(a, 1)
       n = size(a, 2)
-      
+
       do i = 1, m
          do j = 1, m
             cc(i, j) = 0._dp
@@ -45,23 +45,23 @@ contains
       end do
    end subroutine
 
-   pure function mymatmulf(a, b) result(c)
+   pure function mymatmulf(a, b) result(cc)
       integer :: m, n
       integer :: i, j, k
 
       real(kind=dp), dimension(:, :), intent(in) :: a
       real(kind=dp), dimension(:, :), intent(in) :: b
-      real(kind=dp), dimension(1:size(a, 1), 1:size(a, 1)) :: c
+      real(kind=dp), dimension(1:size(a, 1), 1:size(a, 1)) :: cc
 
       m = size(a, 1)
       n = size(a, 2)
-      
-      c = 0._dp
-      
+
+      cc = 0._dp
+
       do i = 1, m
          do j = 1, m
             do k = 1, n
-               c(i, j) = c(i, j) + a(i, k)*b(k, j)
+               cc(i, j) = cc(i, j) + a(i, k)*b(k, j)
             end do
          end do
       end do
